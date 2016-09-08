@@ -1,70 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include ('admin.template.partials.nav')
 
-        <title>Bienvenido a la nueva cosa</title>
+    <section class="section-login">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-tittle">Iniciar Sesion</h3>
+        </div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+            <div class="panel-registro">
+                <form class="form-horizontal" role="form" method="POST"
+                      action="">
+                    {!! csrf_field() !!}
+                <div class="form-group" >
+                    <label for="nombre">Username</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Introduce la Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" placeholder="Introduce la Contraseña">
+                </div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway';
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary  has-spinner" class="btn btn-success">Insertar</button>
+                    <button type="submit" class="btn btn-primary  has-spinner" class="btn btn-success">Cancelar</button>
+                </div>
+            </form>
+            </div>
 
-            .full-height {
-                height: 100vh;
-            }
+        </div>
+    </section>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+@include ('admin.template.partials.footer')
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Hola desde SofSolidario vamos a perder software 3</h1>
-    </body>
+</body>
 </html>
