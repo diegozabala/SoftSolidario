@@ -16,9 +16,9 @@
 }
 
 .logo{
-	padding-left: 40%;
-    padding-right: 40%;
-    padding-top: 15px;
+	padding-left: 45%;
+    padding-right: 45%;
+    padding-top: 0;
 }
 
 .pie-pagina{
@@ -34,7 +34,7 @@
 
 
 .navbar-default{
-	background-color: #485e88;
+	background-color: #337ab7;
 	padding-left: 10%;
     padding-right: 10%;
     
