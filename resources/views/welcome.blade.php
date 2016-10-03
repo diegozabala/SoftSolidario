@@ -1,35 +1,37 @@
 @include ('admin.template.partials.nav')
 
-    <section class="section-login">
-        <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-tittle">Iniciar Sesion</h3>
-        </div>
+<div class="container">
+    
+<div class="row" style="margin-top:40px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    	<form role="form">
+			<fieldset>
+				<h2>Iniciar Sesión</h2>
+				<hr class="colorgraph">
+				<div class="form-group">
+                   <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+				</div>
+				<div class="form-group">
+                   <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+				</div>
+				<span class="button-checkbox">
+					<button type="button" class="btn" data-color="info">Recordarme</button>
+                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
+					<a href="" class="btn btn-link pull-right">Olvido Su Contraseña?</a>
+				</span>
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Ingresar">
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:20px">
+						<a href="" class="btn btn-lg btn-primary btn-block">Registrarse</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
 
-            <div class="panel-registro">
-                <form class="form-horizontal" role="form" method="POST"
-                      action="">
-                    {!! csrf_field() !!}
-                <div class="form-group" >
-                    <label for="nombre">Username</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Introduce la Nombre">
-                </div>
-                <div class="form-group">
-                    <label for="contrasena">Contraseña</label>
-                    <input type="password" class="form-control" id="contrasena" placeholder="Introduce la Contraseña">
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary  has-spinner" class="btn btn-success">Insertar</button>
-                    <button type="submit" class="btn btn-primary  has-spinner" class="btn btn-success">Cancelar</button>
-                </div>
-            </form>
-            </div>
-
-        </div>
-    </section>
-
+</div>  
 @include ('admin.template.partials.footer')
-
-</body>
-</html>
