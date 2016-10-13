@@ -121,9 +121,7 @@ class PostgresGrammar extends Grammar
 
         $index = $this->wrap($command->index);
 
-        $algorithm = $command->algorithm ? ' using '.$command->algorithm : '';
-
-        return "create index {$index} on ".$this->wrapTable($blueprint).$algorithm." ({$columns})";
+        return "create index {$index} on ".$this->wrapTable($blueprint)." ({$columns})";
     }
 
     /**
@@ -425,7 +423,7 @@ class PostgresGrammar extends Grammar
     protected function typeEnum(Fluent $column)
     {
         $allowed = array_map(function ($a) {
-            return "'{$a}'";
+            return "'".$a."'";
         }, $column->allowed);
 
         return "varchar(255) check (\"{$column->name}\" in (".implode(', ', $allowed).'))';

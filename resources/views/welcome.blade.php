@@ -1,37 +1,45 @@
-@include ('admin.template.partials.nav')
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Laravel</title>
 
-<div class="container">
-    
-<div class="row" style="margin-top:40px">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    	<form role="form">
-			<fieldset>
-				<h2>Iniciar Sesión</h2>
-				<hr class="colorgraph">
-				<div class="form-group">
-                   <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
-				</div>
-				<div class="form-group">
-                   <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
-				</div>
-				<span class="button-checkbox">
-					<button type="button" class="btn" data-color="info">Recordarme</button>
-                    <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
-					<a href="" class="btn btn-link pull-right">Olvido Su Contraseña?</a>
-				</span>
-				<hr class="colorgraph">
-				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-6">
-                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Ingresar">
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6" style="margin-top:20px">
-						<a href="" class="btn btn-lg btn-primary btn-block">Registrarse</a>
-					</div>
-				</div>
-			</fieldset>
-		</form>
-	</div>
-</div>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-</div>  
-@include ('admin.template.partials.footer')
+        <style>
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+            }
+
+            .container {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
+
+            .title {
+                font-size: 96px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div class="title">Laravel 5</div>
+            </div>
+        </div>
+    </body>
+</html>

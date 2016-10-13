@@ -35,6 +35,16 @@ class SyncJob extends Job implements JobContract
     }
 
     /**
+     * Fire the job.
+     *
+     * @return void
+     */
+    public function fire()
+    {
+        $this->resolveAndFire(json_decode($this->payload, true));
+    }
+
+    /**
      * Get the raw body string for the job.
      *
      * @return string
