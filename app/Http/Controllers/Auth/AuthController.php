@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use Sessions;
+use Session;
 
 class AuthController extends Controller
 {
@@ -55,14 +55,15 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $this->validate($request,['email'=> 'required', 'password'=>'required',]);
+        $this->validate($request,['email'=> 'required', 
+            'password'=>'required',]);
 
         $credentials = $request->only('email','password');
         if($this->auth->attempt($credentials,$request->has('remember'))){
             return view('home');
         }
 
-        return view()->with("msjerror","Credenciales Incorrectas");
+        return "Credenciales Incorrectas";
     }
 
         /**
@@ -109,8 +110,8 @@ class AuthController extends Controller
     protected function getLogout()
     {
         $this->auth->logout();
-        Sessions::flush();
-        return redirect('login');
+        Session::flush();
+        return view('login');
     }
 
 
