@@ -33,7 +33,8 @@
         <p class="login-box-msg">Ingrese al sistema</p>
 
         <form action="login" method="post">
-          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+         
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
           
           <div class="form-group has-feedback">
             <input type="email" class="form-control" name="email" placeholder="Email">

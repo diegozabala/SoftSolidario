@@ -59,7 +59,7 @@ class AuthController extends Controller
             'password'=>'required',]);
 
         $credentials = $request->only('email','password');
-        if($this->auth->attempt($credentials,$request->has('remember'))){
+        if($this->auth->attempt($credentials)){
             return view('home');
         }
 

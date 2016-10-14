@@ -32,11 +32,10 @@ Route::post('register',['as' => 'auth\register', 'uses' => 'Auth\AuthController@
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
 
-/*
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-        Route::resource('organizaciones', 'OrganizacionesController');
-        Route::get('organizaciones/{id}/destroy', ['uses' => 'OrganizacionesController@destroy', 'as' => 'admin.organizaciones.destroy']);
+Route::group(['prefix' => 'admin'], function() {
 
-    });
-*/
+		//Ejemplo de ruta: http://localhost/SoftSolidario/public/admin/organizaciones/1
+        //Route::get('organizaciones/{id}', ['uses' => 'OrganizacionesController@show', 'as' => 'admin.organizaciones.show']);
+	Route::resource('org','OrgsController');
+});
