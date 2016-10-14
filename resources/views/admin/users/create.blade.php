@@ -7,15 +7,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('fonts/font-awesome.min.css')}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="fonts/ionicons.min.css">
+    <link rel="stylesheet" href="{{asset('fonts/ionicons.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="{{asset('plugins/iCheck/square/blue.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,9 +32,9 @@
       <div class="login-box-body">
         <p class="login-box-msg">Registrarse</p>
 
-        <form action="register" method="post">
+        <form action="{{route('users.store')}}" method="post">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-          
+
           <div class="form-group has-feedback">
             <input type="text" class="form-control" name="name" placeholder="nombre de usuario">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -49,7 +49,7 @@
             <input type="password" class="form-control" name="password" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-         
+
           <div class="row">
 
             <div class="col-xs-4">
@@ -58,8 +58,8 @@
           </div>
         </form>
 
-     
-       
+
+
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

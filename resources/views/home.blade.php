@@ -76,7 +76,7 @@
                       <a href="#" class="btn btn-default btn-flat">Perfil</a>
                     </div>
                     <div class="pull-right">
-                      <a href="logout" class="btn btn-default btn-flat">Salir</a>
+                      <a href="{{route('solidario.auth.logout')}}" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
@@ -127,7 +127,7 @@
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> COHOOBIENESTAR</a></li>
               </ul>
             </li>
-           
+
             <li>
               <a href="pages/widgets.html">
                 <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
