@@ -31,3 +31,12 @@ Route::get('register','Auth\AuthController@getRegister');
 Route::post('register',['as' => 'auth\register', 'uses' => 'Auth\AuthController@postRegister']);
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
+
+/*
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+        Route::resource('organizaciones', 'OrganizacionesController');
+        Route::get('organizaciones/{id}/destroy', ['uses' => 'OrganizacionesController@destroy', 'as' => 'admin.organizaciones.destroy']);
+
+    });
+*/

@@ -97,7 +97,7 @@ class AuthController extends Controller
         $user->password = bcrypt($data['password']);
 
         if($user->save()){
-            return "Se ha registrado correctaente el USUARIO";
+            return "Se ha registrado correctamente el USUARIO";
         }
     }
 
