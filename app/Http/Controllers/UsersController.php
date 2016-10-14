@@ -17,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('name','ASC')->paginate(50);
+        $users = User::orderBy('name','ASC')->paginate(15);
         return view('admin.users.index')->with('users',$users);
     }
 
@@ -37,8 +37,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
       $usuario = new User();
       $usuario->name=$request->name;
       $usuario->email=$request->email;
@@ -46,42 +45,41 @@ class UsersController extends Controller
 
       $usuario->save();
 
-      return redirect()->route('front.index');
+      return redirect()->route('solidario.users.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+      $usuario = User::find($id);
+      return view('admin/users/edit',['usuario'=>$usuario]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+      $usuario = User::find($id);
+
+      $usuarios = User::all();
+      $flagCorreo = false;
+
+      foreach ($usuarios as $user) {
+        if($user->email == $request->email && $user->id != $id){
+          $flagCorreo = true;
+        }
+      }
+
+      if ($flagCorreo == true) {
+        return redirect()->route('solidario.users.edit',$id);
+      }
+      if ($flagCorreo == false) {
+
+        $usuario->name=$request->name;
+        $usuario->email=$request->email;
+        $usuario->password=bcrypt($request->password);
+
+        $usuario->save();
+
+        return redirect()->route('solidario.users.index');
     }
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -89,8 +87,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+      $usuario = User::find($id);
+      $usuario->delete();
+
+      return redirect()->route('solidario.users.index');
     }
 }

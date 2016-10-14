@@ -32,7 +32,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Registrarse</p>
 
-        <form action="{{route('users.store')}}" method="post">
+        <form action="{{route('front.store')}}" method="post">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
           <div class="form-group has-feedback">

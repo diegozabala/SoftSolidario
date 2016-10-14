@@ -23,13 +23,16 @@ Route::get('home', function () {
 */
 
 Route::get('/',['as' => 'front.index','uses' => 'FrontController@index']);
-Route::resource('users','UsersController');
+Route::resource('front','FrontController');
 
 Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
 
   Route::get('/', ['as' => 'solidario.index', function () {
-      return view('home');
+      return view('index');
   }]);
+  Route::resource('users','UsersController');
+  Route::get('user/{id}/destroy',['uses'=>'UsersController@destroy',
+                                  'as' => 'solidario.users.destroy']);
 
 });
 
