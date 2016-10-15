@@ -35,9 +35,14 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::get('user/{id}/destroy',['uses'=>'UsersController@destroy',
                                   'as' => 'solidario.users.destroy']);
 
+
   Route::resource('patrimonios','PatrimoniosController');
   Route::get('patrimonio/{id}/destroy',['uses'=>'PatrimoniosController@destroy',
                                   'as' => 'solidario.patrimonios.destroy']);
+
+  Route::resource('orgs','OrganizacionesController');
+  Route::get('organizacion/{id}/destroy',['uses'=>'OrganizacionesController@destroy',
+                                  'as' => 'solidario.orgs.destroy']);
 
 });
 
@@ -62,8 +67,8 @@ Route::get('home','HomeController@index');
 
 Route::group(['prefix' => 'admin'], function() {
 
-		//Ejemplo de ruta: http://localhost/SoftSolidario/public/admin/organizaciones/1
+    //Ejemplo de ruta: http://localhost/SoftSolidario/public/admin/organizaciones/1
         //Route::get('organizaciones/{id}', ['uses' => 'OrganizacionesController@show', 'as' => 'admin.organizaciones.show']);
-	Route::resource('org','OrgsController');
+  Route::resource('org','OrgsController');
 });
 */
