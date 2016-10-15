@@ -30,9 +30,14 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::get('/', ['as' => 'solidario.index', function () {
       return view('index');
   }]);
+
   Route::resource('users','UsersController');
   Route::get('user/{id}/destroy',['uses'=>'UsersController@destroy',
                                   'as' => 'solidario.users.destroy']);
+
+  Route::resource('patrimonios','PatrimoniosController');
+  Route::get('patrimonio/{id}/destroy',['uses'=>'PatrimoniosController@destroy',
+                                  'as' => 'solidario.patrimonios.destroy']);
 
 });
 
