@@ -12,10 +12,12 @@
       <div class="row">
         <div class="col-md-12">
           <div class="panel panel-danger">
-            <h2 align="center">Bienvenido</h2>
+            <h2 align="center">Bienvenido a la pagina inicial de SoftSolidario</h2>
+
           </div>
         </div>
       </div>
+
     </div>
 
     <div align="center" class="Ingresar">

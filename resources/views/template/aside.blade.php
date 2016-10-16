@@ -5,6 +5,7 @@
       <li><a href="{{route('solidario.users.index')}}"><i class="fa fa-users"></i> <span> Usuarios</span></a></li>
       <li><a href="{{route('solidario.orgs.index')}}"><i class="fa fa-sitemap"></i> <span> Organizaciones</span></a></li>
       <li><a href="{{route('solidario.patrimonios.index')}}"><i class="fa fa-users"></i> <span> Patrimonios</span></a></li>
+      <li><a href="{{route('solidario.dictamenes.index')}}"><i class="fa fa-book"></i> <span> Dictamenes</span></a></li>
     </ul>
   </section>
 </aside>

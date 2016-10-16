@@ -44,15 +44,19 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::get('organizacion/{id}/destroy',['uses'=>'OrganizacionesController@destroy',
                                   'as' => 'solidario.orgs.destroy']);
 
+  Route::resource('dictamenes','DictamenesController');
+  Route::get('dictamen/{id}/destroy',['uses'=>'DictamenesController@destroy',
+                              'as' => 'solidario.dictamenes.destroy']);
+
 });
 
 Route::get('solidario/auth/login',['uses'=>'Auth\AuthController@getLogin',
                                 'as' =>'solidario.auth.login']);
+
 Route::post('solidario/auth/login',['uses'=>'Auth\AuthController@postLogin',
                               'as' =>'solidario.auth.login']);
 Route::get('solidario/auth/logout',['uses'=>'Auth\AuthController@logout',
                                 'as' =>'solidario.auth.logout']);
-
 /*
 Route::get('login','Auth\AuthController@getLogin');
 Route::post('login',['as' => 'login', 'uses' => 'Auth\AuthController@postLogin']);

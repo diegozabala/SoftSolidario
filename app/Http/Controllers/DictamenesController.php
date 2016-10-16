@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Patrimonio;
+use App\Dictamen;
 use App\Organizacion;
 
-class PatrimoniosController extends Controller
+class DictamenesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class PatrimoniosController extends Controller
      */
     public function index()
     {
-        $patrimonios = Patrimonio::orderBy('anio','ASC')->paginate(15);
+        $dictamenes = Dictamen::orderBy('id','ASC')->paginate(10);
         $organizaciones = Organizacion::all();
-        return view('admin.patrimonios.index')->with('patrimonios',$patrimonios)->with('organizaciones',$organizaciones);
+        return view('admin.dictamenes.index')->with('dictamenes',$dictamenes)->with('organizaciones',$organizaciones);
     }
 
     /**
@@ -28,7 +28,6 @@ class PatrimoniosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
     /**
      * Store a newly created resource in storage.
      *
@@ -38,7 +37,7 @@ class PatrimoniosController extends Controller
     public function store(Request $request)
     {
 
-        $patrimonio = new Patrimonio();
+        $dictamen = new Dictamen();
         $organizaciones = Organizacion::all();
         $id = 0;
         foreach ($organizaciones as $org) {
@@ -47,23 +46,13 @@ class PatrimoniosController extends Controller
             }
         }
 
-        $patrimonio->idEmpresa = $id;
-        $patrimonio->anio = $request->anio;
-        $patrimonio->valor = $request->valor;
-        $patrimonio->save();
+        $dictamen->idEmpresa = $id;
+        $dictamen->nombreAuditor = $request->nombreAuditor;
+        $dictamen->numTarjetaProfesional = $request->numTarjetaProfesional;
+        $dictamen->cantLLamadosAtencion = $request->cantLLamadosAtencion;
+        $dictamen->save();
 
-        return redirect()->route('solidario.patrimonios.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('solidario.dictamenes.index');
     }
 
     /**
@@ -74,9 +63,9 @@ class PatrimoniosController extends Controller
      */
     public function edit($id)
     {
-        $patrimonio = Patrimonio::find($id);
+        $dictamen = Dictamen::find($id);
         $organizaciones = Organizacion::all();
-        return view('admin/patrimonios/edit',['patrimonio'=>$patrimonio],['organizaciones'=>$organizaciones]);
+        return view('admin/dictamenes/edit',['dictamen'=>$dictamen],['organizaciones'=>$organizaciones]);
     }
 
     /**
@@ -88,12 +77,13 @@ class PatrimoniosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $patrimonio = Patrimonio::find($id);
-        $patrimonio->anio = $request->anio;
-        $patrimonio->valor = $request->valor;
+        $dictamen = Dictamen::find($id);
+        $dictamen->nombreAuditor = $request->nombreAuditor;
+        $dictamen->numTarjetaProfesional = $request->numTarjetaProfesional;
+        $dictamen->cantLLamadosAtencion = $request->cantLLamadosAtencion;
 
-        $patrimonio->save();
-        return redirect()->route('solidario.patrimonios.index');
+        $dictamen->save();
+        return redirect()->route('solidario.dictamenes.index');
     }
 
     /**
@@ -104,8 +94,8 @@ class PatrimoniosController extends Controller
      */
     public function destroy($id)
     {
-        $patrimonio = Patrimonio::find($id);
-        $patrimonio->delete();
-        return redirect()->route('solidario.patrimonios.index');
+        $dictamen = Dictamen::find($id);
+        $dictamen->delete();
+        return redirect()->route('solidario.dictamenes.index');
     }
 }
