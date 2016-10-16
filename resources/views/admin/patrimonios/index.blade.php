@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @section('title')
-  Lista de Usuarios
+  Lista de Patrimonios
 @endsection
 
 @section('content')
@@ -20,35 +20,46 @@
 
           <!--Aqui va el formulario de registro de un nuevo usuario-->
           <form class="row" action="{{route('solidario.patrimonios.store')}}" method="post">
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <div class="box-body">
 
               <div class="form-group">
-                <label>Organización</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <optgroup label="Fondos">
-                    <option>FEEUQ</option>
-                    <option>FEIBG</option>
+                <label for="nombreEmpresa">Organización</label>
+
+                <select class="form-control" type="text" name="nombreEmpresa" style="width: 100%;">
+                  <optgroup label="Fondos de Empleados">
+                    @foreach($organizaciones as $organizacion)
+                      @if($organizacion->razonSocial == 'Fondo de Empleados')
+                        <option>{{$organizacion->nombre}}</option>
+                      @endif
+                    @endforeach
                   </optgroup>
 
                   <optgroup label="Cooperativas">
-                    <option>COODEQ</option>
-                    <option>COFINCAFE</option>
-                    <option>AVANZA</option>
+                    @foreach($organizaciones as $organizacion)
+                      @if($organizacion->razonSocial == 'Cooperativa')
+                        <option>{{$organizacion->nombre}}</option>
+                      @endif
+                    @endforeach
                   </optgroup>
 
                   <optgroup label="Mutuales">
+                    @foreach($organizaciones as $organizacion)
+                      @if($organizacion->razonSocial == 'Mutual')
+                        <option>{{$organizacion->nombre}}</option>
+                      @endif
+                    @endforeach
                   </optgroup>
-
                 </select>
-              </div><!-- /.form-group -->
+              </div>
 
               <div class="form-group">
                 <label for="anio">Año</label>
-                <input type="number" class="form-control" id="anio" placeholder="Ingrese el año al que pertenece el valor del patrimonio" required>
+                <input type="number" class="form-control" name="anio" placeholder="Ingrese el año al que pertenece el valor del patrimonio" required>
               </div>
               <div class="form-group">
                 <label for="valor">Valor</label>
-                <input type="number" class="form-control" id="valor" placeholder="Ingrese el Valor/Cantidad de Dinero en Pesos Colombianos" required>
+                <input type="number" class="form-control" name="valor" placeholder="Ingrese el Valor/Cantidad de Dinero en Pesos Colombianos" required>
               </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
@@ -89,4 +100,5 @@
   </table>
 
   {!! $patrimonios->render() !!}
+
 @endsection

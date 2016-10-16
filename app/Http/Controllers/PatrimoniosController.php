@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Patrimonio;
+use App\Organizacion;
 
 class PatrimoniosController extends Controller
 {
@@ -18,7 +19,8 @@ class PatrimoniosController extends Controller
     public function index()
     {
         $patrimonios = Patrimonio::orderBy('anio','ASC')->paginate(15);
-        return view('admin.patrimonios.index')->with('patrimonios',$patrimonios);
+        $organizaciones = Organizacion::all();
+        return view('admin.patrimonios.index')->with('patrimonios',$patrimonios)->with('organizaciones',$organizaciones);
     }
 
     /**
@@ -39,11 +41,19 @@ class PatrimoniosController extends Controller
      */
     public function store(Request $request)
     {
+
         $patrimonio = new Patrimonio();
-        $patrimonio->idEmpresa = $request->idEmpresa;
+        $organizaciones = Organizacion::all();
+        $id = 0;
+        foreach ($organizaciones as $org) {
+            if($org->nombre == $request->nombreEmpresa){
+                $id = $org->id;
+            }
+        }
+
+        $patrimonio->idEmpresa = $id;
         $patrimonio->anio = $request->anio;
         $patrimonio->valor = $request->valor;
-
         $patrimonio->save();
 
         return redirect()->route('solidario.patrimonios.index');
@@ -68,8 +78,9 @@ class PatrimoniosController extends Controller
      */
     public function edit($id)
     {
-        $patrimonio = Patrimonio::find('$id');
-        return view('admin/patrimonios/edit',['patrimonio'=>$patrimonio]);
+        $patrimonio = Patrimonio::find($id);
+        $organizaciones = Organizacion::all();
+        return view('admin/patrimonios/edit',['patrimonio'=>$patrimonio],['organizaciones'=>$organizaciones]);
     }
 
     /**
@@ -82,7 +93,6 @@ class PatrimoniosController extends Controller
     public function update(Request $request, $id)
     {
         $patrimonio = Patrimonio::find($id);
-        $patrimonio->idEmpresa = $request->idEmpresa;
         $patrimonio->anio = $request->anio;
         $patrimonio->valor = $request->valor;
 

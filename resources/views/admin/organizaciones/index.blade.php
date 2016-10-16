@@ -21,34 +21,29 @@
           <!--Aqui va el formulario de registro de una nueva organizacion-->
           <form class="row" action="{{route('solidario.orgs.store')}}" method="post">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-            <div class="form-group">
-              <label class="control-label col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3" for="nombre">Nombre:</label>
-              <div class="col-sm-3 col-md-3">
-                <input class="form-control" type="text" name="nombre" value="" placeholder="Nombre de la organizacion" required>
-              </div>
-            </div>
-            <br><br>
-            <div class="form-group">
-              <label class="control-label col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3" for="telefono">Telefono:</label>
-              <div class="col-sm-3 col-md-3">
-                <input class="form-control" type="number" name="telefono" value="" placeholder="Ingrese un telefono" required>
-              </div>
-            </div>
-            <br><br>
-            <div class="form-group">
-              <label class="control-label col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3" for="direccion">Dirección:</label>
-              <div class="col-sm-3 col-md-3">
-                <input class="form-control" type="text" name="direccion" value="" placeholder="Ingrese una dirección">
-              </div>
-            </div>
-            <br><br>
-            <div class="form-group">
-              <label class="control-label col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3" for="razonSocial">Razón Social:</label>
-              <div class="col-sm-3 col-md-3">
-                <input class="form-control" type="text" name="razonSocial" value="" placeholder="Ingrese la razón social">
-              </div>
-            </div>
-            <div class="form-group col-sm-2 col-sm-offset-3">
+             <div class="box-body">
+                <div class="form-group">
+                  <label for="nombre">Nombre:</label>
+                    <input class="form-control" type="text" name="nombre" value="" placeholder="Nombre de la organizacion" required>
+                </div>
+                <div class="form-group">
+                  <label for="telefono">Telefono:</label>              
+                    <input class="form-control" type="number" name="telefono" value="" placeholder="Ingrese un telefono" required>
+                </div>
+                <div class="form-group">
+                  <label for="direccion">Dirección:</label>
+                    <input class="form-control" type="text" name="direccion" value="" placeholder="Ingrese una dirección">
+                </div>
+                <div class="form-group">
+                  <label for="direccion">Razón Social</label>
+                      <select class="form-control" type="text" name="razonSocial">
+                          <option>Fondo de Empleados</option>
+                          <option>Cooperativa</option>
+                          <option>Mutual</option>
+                      </select>
+                </div>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
               <button class="btn btn-primary">Registrar</button>
             </div>
 
