@@ -62,7 +62,7 @@
                 <input type="number" class="form-control" name="numTarjetaProfesional" placeholder="Ingrese el numero de la tarjeta profesional del auditor" required>
               </div>
               <div class="form-group">
-                <label for="cantLLamadosAtencion">Numero de tarjeta profesional</label>
+                <label for="cantLLamadosAtencion">Cantidad de Llamados de atención</label>
                 <input type="number" class="form-control" name="cantLLamadosAtencion" placeholder="Ingrese la cantidad de quejas en el dictamen" required>
               </div>
             </div><!-- /.box-body -->

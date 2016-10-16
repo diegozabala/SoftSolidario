@@ -49,6 +49,10 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::get('dictamen/{id}/destroy',['uses'=>'DictamenesController@destroy',
                               'as' => 'solidario.dictamenes.destroy']);
 
+  Route::resource('comentarios','ComentariosController');
+  Route::get('comentario/{id}/destroy',['uses'=>'ComentariosController@destroy',
+                              'as' => 'solidario.comentarios.destroy']);
+
 });
 
 Route::get('solidario/auth/login',['uses'=>'Auth\AuthController@getLogin',

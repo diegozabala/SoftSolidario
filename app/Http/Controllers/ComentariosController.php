@@ -6,62 +6,92 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Organizacion;
 use App\Comentario;
 
 class ComentariosController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-      $comentarios = Comentario::orderBy('id')->paginate(10);
-      return view('admin.comentarios.index')->with('comentarios',$comentarios);
-  }
-
-  public function store(Request $request){
-    $comentario = new Comentario();
-    $comentario->descripcion=$request->descripcion;
-    $comentario->idEmpresa=$request->idEmpresa;
-    
-
-    $comentario->save();
-
-    return redirect()->route('solidario.com.index');
-  }
-
-  public function edit($id)
-  {
-    $comentario = Comentario::find($id);
-    return view('admin/comentarios/edit',['comentario'=>$comentario]);
-  }
-
- public function update(Request $request, $id){
-    $comentario = Comentario::find($id);
-
-    $comentarios = Comentario::all();
-    $flagEmpresa = false;
-
-    foreach ($comentarios as $com) {
-      if($com->idEmpresa != $request->idEmpresa && $com->id != $id){
-        $flagNombre = false;
-      }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $comentarios = Comentario::orderBy('id','ASC')->paginate(10);
+        $organizaciones = Organizacion::all();
+        return view('admin.comentarios.index')->with('comentarios',$comentarios)->with('organizaciones',$organizaciones);
     }
 
-    if ($flagNombre == true) {
-      return redirect()->route('solidario.orgs.edit',$id);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $comentario = new Comentario();
+        $organizaciones = Organizacion::all();
+        $id = 0;
+        foreach ($organizaciones as $org) {
+            if($org->nombre == $request->nombreEmpresa){
+                $id = $org->id;
+            }
+        }
+
+        $comentario->idEmpresa = $id;
+        $comentario->descripcion = $request->descripcion;
+        $comentario->save();
+
+        return redirect()->route('solidario.comentarios.index');
     }
-    if ($flagNombre == false) {
 
-      $comentario->descripcion=$request->descripcion;
-      
-   
-      $comentario->save();
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $comentario = Comentario::find($id);
+        $organizaciones = Organizacion::all();
+        return view('admin/comentarios/edit',['comentario'=>$comentario],['organizaciones'=>$organizaciones]);
+    }
 
-      return redirect()->route('solidario.com.index');
-  }
-}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $comentario = Comentario::find($id);
+        $comentario->descripcion = $request->descripcion;
+       
+        $comentario->save();
+        return redirect()->route('solidario.comentarios.index');
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $comentario = Comentario::find($id);
+        $comentario->delete();
+        return redirect()->route('solidario.comentarios.index');
+    }
 }

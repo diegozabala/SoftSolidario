@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @section('title')
-  Editar datos del Dictamen{{$dictamen->nombreAuditor}}
+  Editar datos del Dictamen{{$dictamen->id}}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
   <div class="box-body">
     <div class="form-group">
       <label for="nombreAuditor">Nombre Auditor</label>
-      <input type="number" class="form-control" name="anio" value="{{$dictamen->anio}}" required>
+      <input type="text" class="form-control" name="anio" value="{{$dictamen->nombreAuditor}}" required>
     </div>
 
     <div class="form-group">
