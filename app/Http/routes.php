@@ -22,7 +22,9 @@ Route::get('home', function () {
 
 */
 
-Route::get('/',['as' => 'front.index','uses' => 'FrontController@index']);
+//Route::get('/',['as' => 'front.index','uses' => 'FrontController@index']);
+//Route::resource('front','FrontController');
+Route::get('/',['as' => 'front.create','uses' => 'FrontController@create']);
 Route::resource('front','FrontController');
 
 Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
@@ -34,7 +36,6 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::resource('users','UsersController');
   Route::get('user/{id}/destroy',['uses'=>'UsersController@destroy',
                                   'as' => 'solidario.users.destroy']);
-
 
   Route::resource('patrimonios','PatrimoniosController');
   Route::get('patrimonio/{id}/destroy',['uses'=>'PatrimoniosController@destroy',
@@ -55,6 +56,7 @@ Route::get('solidario/auth/login',['uses'=>'Auth\AuthController@getLogin',
 
 Route::post('solidario/auth/login',['uses'=>'Auth\AuthController@postLogin',
                               'as' =>'solidario.auth.login']);
+
 Route::get('solidario/auth/logout',['uses'=>'Auth\AuthController@logout',
                                 'as' =>'solidario.auth.logout']);
 /*
