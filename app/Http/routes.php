@@ -22,8 +22,8 @@ Route::get('home', function () {
 
 */
 
-//Route::get('/',['as' => 'front.index','uses' => 'FrontController@index']);
-//Route::resource('front','FrontController');
+Route::get('/',['as' => 'front.index','uses' => 'FrontController@index']);
+Route::resource('front','FrontController');
 Route::get('/',['as' => 'front.create','uses' => 'FrontController@create']);
 Route::resource('front','FrontController');
 

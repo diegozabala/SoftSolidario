@@ -32,7 +32,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Registrarse</p>
 
-        <form action="{{route('front.store')}}" method="post">
+        <form action="{{route('front.store')}}" method="post" name ="registro">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
           <div class="form-group has-feedback">
@@ -50,16 +50,16 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
 
-          <div class="row">
-
-            <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
-            </div><!-- /.col -->
-          </div>
-        </form>
-
-
-
+            <form >
+              <button type="submit" name = "boton" class="btn btn-primary btn-block btn-flat">Registrar</button>
+            </form><!-- /.col -->
+          </form>
+          <br>
+          <br>
+          <label>Para iniciar sesión</label>
+          <form action="{{route('front.index') }}">
+            <button type="btn" class="btn btn-primary btn-block btn-flat">Iniciar sesión</button>
+          </form>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

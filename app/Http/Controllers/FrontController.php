@@ -21,13 +21,14 @@ class FrontController extends Controller
     }
 
     public function store(Request $request){
-      $usuario = new User();
-      $usuario->name=$request->name;
-      $usuario->email=$request->email;
-      $usuario->password=bcrypt($request->password);
 
-      $usuario->save();
+        $usuario = new User();
+        $usuario->name=$request->name;
+        $usuario->email=$request->email;
+        $usuario->password=bcrypt($request->password);
 
-      return redirect()->route('front.index');
+        $usuario->save();
+
+        return redirect()->route('front.index');
     }
 }
