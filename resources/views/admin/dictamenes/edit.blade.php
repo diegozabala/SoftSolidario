@@ -10,7 +10,7 @@
   <div class="box-body">
     <div class="form-group">
       <label for="nombreAuditor">Nombre Auditor</label>
-      <input type="text" class="form-control" name="anio" value="{{$dictamen->nombreAuditor}}" required>
+      <input type="text" class="form-control" name="nombreAuditor" value="{{$dictamen->nombreAuditor}}" required>
     </div>
 
     <div class="form-group">

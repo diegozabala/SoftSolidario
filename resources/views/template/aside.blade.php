@@ -7,6 +7,7 @@
       <li><a href="{{route('solidario.patrimonios.index')}}"><i class="fa fa-users"></i> <span> Patrimonios</span></a></li>
       <li><a href="{{route('solidario.dictamenes.index')}}"><i class="fa fa-book"></i> <span> Dictamenes</span></a></li>
       <li><a href="{{route('solidario.comentarios.index')}}"><i class="fa fa-comment-o"></i> <span> Comentarios</span></a></li>
+      <li><a href="{{route('solidario.reuniones.index')}}"><i class="fa fa-calendar-o"> </i><span> Reuniones</span></a></li>
     </ul>
   </section>
 </aside>
