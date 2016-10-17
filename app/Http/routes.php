@@ -56,6 +56,10 @@ Route::group(['prefix'=>'solidario','middleware'=>'auth'],function(){
   Route::resource('reuniones','ReunionesController');
   Route::get('reunion/{id}/destroy',['uses'=>'ReunionesController@destroy',
                               'as' => 'solidario.reuniones.destroy']);
+
+  Route::resource('indicadores','IndicadoresController');
+  Route::get('indicador/{id}/destroy',['uses'=>'IndicadoresController@destroy',
+                              'as' => 'solidario.indicadores.destroy']);
 });
 
 Route::get('solidario/auth/login',['uses'=>'Auth\AuthController@getLogin',

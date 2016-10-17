@@ -33,8 +33,12 @@
     <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
     <script src="{{asset('template/dist/js/app.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('chartjs/Chart.js')}}"></script>
-    <script type="text/javascript" src="{{asset('jspdf/jspdf.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('jspdf/jspdf.plugin.autotable.js')}}"></script>
     @yield('js')
+
+
+ <!-- javascript del sistema laravel -->
+  <script src="js/highcharts.js"></script>
+  <script src="js/graficas.js"></script>
+
   </body>
 </html>
