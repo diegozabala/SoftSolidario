@@ -7,11 +7,11 @@
 
   <body>
   <div align="center">
-    <img src="../Public/dist/img/LOGO.jpg" align="center">
+    <img src="../Public/dist/img/ss.png" align="center">
   </div>
          <div align="center" class="Ingresar">
       <a class="btn btn-primary" href="{{route('solidario.auth.login')}}" >Ingresar</a>
     </div>
   </body>
-
+ 
 </html>
