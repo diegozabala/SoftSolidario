@@ -8,6 +8,7 @@
       <li><a href="{{route('solidario.dictamenes.index')}}"><i class="fa fa-book"></i> <span> Dictamenes</span></a></li>
       <li><a href="{{route('solidario.comentarios.index')}}"><i class="fa fa-comment-o"></i> <span> Comentarios</span></a></li>
       <li><a href="{{route('solidario.reuniones.index')}}"><i class="fa fa-calendar-o"> </i><span> Reuniones</span></a></li>
+      <li><a href="{{route('solidario.indicadores.index')}}"><i class="fa fa-comment-o"></i> <span> Indicadores</span></a></li>
     </ul>
   </section>
 </aside>
