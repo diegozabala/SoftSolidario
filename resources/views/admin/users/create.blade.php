@@ -32,7 +32,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Registrarse</p>
 
-        <form action="{{route('front.store')}}" method="post" name ="registro">
+        <form action="{{route('front.store')}}" method="post" name ="registro" enctype="multipart/form-data">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
           <div class="form-group has-feedback">
@@ -46,8 +46,24 @@
           </div>
 
           <div class="form-group has-feedback">
+            <select class="selectpicker" name="rol" data-style="btn-primary" style="display: none;">
+                <option>QUINDIO SOLIDARIO</option>
+                <option>COODEQ</option>
+                <option>COFINCAFÉ</option>
+                <option>FEIBG</option>
+                <option>FEUQ</option>
+                <option>AVANZA</option>
+            </select>
+          </div>
+
+          <div class="form-group has-feedback">
             <input type="password" class="form-control" name="password" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="imagen">Imágen</label>
+            <input type="file" class="form-control" name="imagen" placeholder="Inserte imágen" required>
           </div>
 
             <form >

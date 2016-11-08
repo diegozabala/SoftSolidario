@@ -38,15 +38,24 @@ class UsersController extends Controller
      * @return \Illuminatez\Http\Response
      */
     public function store(Request $request){
+      if ($request->file('imagen')){
+        $file=$request->file('imagen');
+        $name= 'usuario_'.time(). ".".$file->getClientOriginalExtension();
+        $path=public_path()."/template/dis/img/estudiantes/";
+        $file->move($path,$name);
+
       $usuario = new User();
       $usuario->name=$request->name;
       $usuario->email=$request->email;
+      $usuario->rol=$request->rol;
+      $usuario->imagen=$name;
       $usuario->password=bcrypt($request->password);
 
       $usuario->save();
 
       return redirect()->route('solidario.users.index');
     }
+  }
 
     public function edit($id)
     {
