@@ -31,6 +31,7 @@
     Route::group(['prefix' => 'solidario', 'middleware' => 'auth'], function () {
 
 
+        Route::resource('welcome', 'WelcomeController');
         Route::resource('users', 'UsersController');
         Route::get('users/{id}/destroy', ['uses' => 'UsersController@destroy', 'as' => 'solidario.user.destroy']);
         Route::get('user/{id}/show', ['uses' => 'UsersController@show', 'as' => 'solidario.user.show']);
