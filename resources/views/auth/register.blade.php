@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<link rel="stylesheet" href="{{ asset('particles/style.css')}}">
+
+<div id="particles-js">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -79,4 +81,9 @@
         </div>
     </div>
 </div>
+
+<!-- stats.js -->
+<script type="text/javascript" src="{{asset('particles/particles.js')}}"> </script>
+<script type="text/javascript" src="{{asset('particles/app.js')}}"> </script>
+<script type="text/javascript" src="{{asset('particles/stats.js')}}"> </script>
 @endsection
