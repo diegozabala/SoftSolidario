@@ -24,8 +24,8 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    <label  for="name">Nombre:</label>
-                        <input class="form-control" type="text" name="name" value="" placeholder="Nombre" required>
+                    <label  for="nombre_usuario">Nombre:</label>
+                        <input class="form-control" type="text" name="nombre_usuario" value="" placeholder="Nombre" required>
                 </div>
 
                 <div class="form-group">
@@ -61,7 +61,6 @@
             <div class="form-group col-sm-2 col-sm-offset-3">
                 <button class="btn btn-primary">Registrar</button>
             </div>
-
           </form>
 
         </div>

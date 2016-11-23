@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use Laracasts\Flash\Flash;
+use Laracasts\Flash\FlashNotifier;
 
 class UsersController extends Controller
 {
@@ -38,22 +40,22 @@ class UsersController extends Controller
      * @return \Illuminatez\Http\Response
      */
     public function store(Request $request){
+
       if ($request->file('imagen')){
-        $file=$request->file('imagen');
-        $name= 'usuario_'.time(). ".".$file->getClientOriginalExtension();
-        $path=public_path()."/template/dis/img/estudiantes/";
-        $file->move($path,$name);
+          $file=$request->file('imagen');
+          $name= 'usuario_'.time(). ".".$file->getClientOriginalExtension();
+          $path=public_path()."/template/dis/img/usuarios/";
+          $file->move($path,$name);
 
-      $usuario = new User();
-      $usuario->name=$request->name;
-      $usuario->email=$request->email;
-      $usuario->rol=$request->rol;
-      $usuario->imagen=$name;
-      $usuario->password=bcrypt($request->password);
+          $usuario = new User();
+          $usuario->name=$request->nombre_usuario;
+          $usuario->email=$request->email;
+          $usuario->rol=$request->rol;
+          $usuario->imagen=$name;
+          $usuario->password=bcrypt($request->password);
+          $usuario->save();
 
-      $usuario->save();
-
-      return redirect()->route('solidario.users.index');
+          return redirect()->route('solidario.users.index');
     }
   }
 
@@ -80,7 +82,7 @@ class UsersController extends Controller
       }
       if ($flagCorreo == false) {
 
-        $usuario->name=$request->name;
+        $usuario->name=$request->nombre_usuario;
         $usuario->email=$request->email;
         $usuario->password=bcrypt($request->password);
 
@@ -97,6 +99,13 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+      $usuario = User::find($id);
+      $usuario->delete();
+
+      return redirect()->route('solidario.users.index');
+    }
+
+    public function show($id){
       $usuario = User::find($id);
       $usuario->delete();
 

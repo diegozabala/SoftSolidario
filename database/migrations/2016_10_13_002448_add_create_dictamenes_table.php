@@ -20,8 +20,8 @@ class AddCreateDictamenesTable extends Migration
             $table->foreign('idEmpresa')->references('id')->on('organizaciones')->onDelete('cascade');
             
             $table->string('nombreAuditor');
-            $table->integer('numTarjetaProfesional');
-            $table->integer('cantLLamadosAtencion');
+            $table->bigInteger('numTarjetaProfesional');
+            $table->bigInteger('cantLLamadosAtencion');
             $table->timestamps();
         });
     }

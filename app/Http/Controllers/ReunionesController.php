@@ -45,11 +45,11 @@ class ReunionesController extends Controller
                 $id = $org->id;
             }
         }
-
         $reunion->idEmpresa = $id;
         $reunion->descripcion = $request->descripcion;
         $reunion->cantidadAsistentes = $request->cantidadAsistentes;
         $reunion->cantidadDecisiones = $request->cantidadDecisiones;
+        $reunion->fecha_realizacion= $request->fecha_realizacion;
         $reunion->save();
 
         return redirect()->route('solidario.reuniones.index');
@@ -81,6 +81,7 @@ class ReunionesController extends Controller
         $reunion->descripcion = $request->descripcion;
         $reunion->cantidadAsistentes = $request->cantidadAsistentes;
         $reunion->cantidadDecisiones = $request->cantidadDecisiones;
+        $reunion->fecha_realizacion= $request->fecha_realizacion;
 
         $reunion->save();
         return redirect()->route('solidario.reuniones.index');

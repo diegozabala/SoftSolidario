@@ -16,7 +16,7 @@ class Reunion extends Model
     protected $table="reuniones";
 
     protected  $fillable=[
-        'idEmpresa','descripcion','cantidadAsistentes','cantidadDecisiones',
+        'idEmpresa','descripcion','cantidadAsistentes','cantidadDecisiones','fecha_realizacion',
     ];
 
     public function organizacion(){

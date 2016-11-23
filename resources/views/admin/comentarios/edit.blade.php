@@ -6,7 +6,7 @@
 
 @section('content')
 
-  {!! Form::open(['route'=>['solidario.comentarios.update',$comentario],'method'=>'PUT','class'=>'form-horizontal']) !!}
+  {!! Form::open(['route'=>['solidario.comentarios.update',$comentario],'method'=>'POST','class'=>'form-horizontal']) !!}
 
   <div class="box-body">
 

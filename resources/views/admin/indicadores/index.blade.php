@@ -15,7 +15,7 @@
 @section('content')
 
   <div id="grafica" style="min-width: 310px; height: 400px; margin: 0 auto">
-
+    
     @if(Auth::user()->rol=="QUINDIO SOLIDARIO")
         <script type="text/javascript">
           $(function ($) {

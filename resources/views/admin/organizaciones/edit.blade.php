@@ -6,7 +6,7 @@
 
 @section('content')
 
-  {!! Form::open(['route'=>['solidario.orgs.update',$organizacion],'method'=>'PUT','class'=>'form-horizontal']) !!}
+  {!! Form::open(['route'=>['solidario.orgs.update',$organizacion],'method'=>'POST','class'=>'form-horizontal']) !!}
   <div class="box-body">
     <div class="form-group">
       <label for="nombre">Nombre:</label>

@@ -36,7 +36,7 @@
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="name" placeholder="nombre de usuario">
+            <input type="text" class="form-control" name="nombre_usuario" placeholder="nombre de usuario">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 

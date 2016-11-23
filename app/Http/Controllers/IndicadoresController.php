@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\ActividadEconomica;
+use App\Comentario;
+use App\Dictamen;
+use App\Organizacion;
+use App\Patrimonio;
+use App\Reunion;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Collective\Annotations\Database;
 
 class IndicadoresController extends Controller
 {
@@ -16,6 +24,14 @@ class IndicadoresController extends Controller
      */
     public function index()
     {
+
+        $reunionesNoviembre=DB::table('reuniones')
+            ->join('organizaciones','organizaciones.id','=','reuniones.idEmpresa')
+            ->select('organizaciones.nombre')
+            ->whereMonth('reuniones.fecha_realizacion', '=', '11')->count('reuniones.id');
+
+        dd($reunionesNoviembre);
+
     	return view('admin.indicadores.index');
     }
 

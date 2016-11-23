@@ -66,6 +66,11 @@
                 <label for="cantidadDecisiones">Cantidad de desiciones realizados en la reunión</label>
                 <input type="number" class="form-control" name="cantidadDecisiones" placeholder="Ingrese la cantidad de deciosiones tomadas" required>
               </div>
+             
+              <div class="form-group">
+                <label for="fecha_realizacion">Fecha de Realización</label>
+                 <input type="date" class="form-control" name="fecha_realizacion" required>
+              </div>
             </div><!-- /.box-body -->
             <div class="box-footer">
               <button type="submit" class="btn btn-primary">Agregar</button>
@@ -82,26 +87,30 @@
   <table class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>IdEmpresa</th>
-        <th>descripcion</th>
-        <th>cantidadAsistentes</th>
-        <th>cantidadDecisiones</th>
+        <th>Empresa</th>
+        <th>Descripcion</th>
+        <th>cantidad Asistentes</th>
+        <th>cantidad Decisiones</th>
+        <th>Fecha Realización</th>
         <th>Editar</th>
         <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
       @foreach($reuniones as $reunion)
-        <tr>
-          <td>{{$reunion->id}}</td>
-          <td>{{$reunion->idEmpresa}}</td>
-          <td>{{$reunion->descripcion}}</td>
-          <td>{{$reunion->cantidadAsistentes}}</td>
-          <td>{{$reunion->cantidadDecisiones}}</td>
-          <td><a href=" {{ route('solidario.reuniones.edit',$reunion->id) }} " class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td><a href=" {{ route('solidario.reuniones.destroy',$reunion->id) }} " class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-        </tr>
+          @foreach($organizaciones as $organizacion)
+            @if($reunion->idEmpresa == $organizacion->id)
+                <tr>
+                  <td>{{$organizacion->nombre}}</td>
+                  <td>{{$reunion->descripcion}}</td>
+                  <td>{{$reunion->cantidadAsistentes}}</td>
+                  <td>{{$reunion->cantidadDecisiones}}</td>
+                  <td>{{$reunion->fecha_realizacion}}</td>
+                  <td><a href=" {{ route('solidario.reuniones.edit',$reunion->id) }} " class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                  <td><a href=" {{ route('solidario.reuniones.destroy',$reunion->id) }} " class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                </tr>
+            @endif
+        @endforeach
       @endforeach
     </tbody>
   </table>

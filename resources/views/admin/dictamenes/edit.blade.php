@@ -6,7 +6,7 @@
 
 @section('content')
 
-  {!! Form::open(['route'=>['solidario.dictamenes.update',$dictamen],'method'=>'PUT','class'=>'form-horizontal']) !!}
+  {!! Form::open(['route'=>['solidario.dictamenes.update',$dictamen],'method'=>'POST','class'=>'form-horizontal']) !!}
   <div class="box-body">
     <div class="form-group">
       <label for="nombreAuditor">Nombre Auditor</label>

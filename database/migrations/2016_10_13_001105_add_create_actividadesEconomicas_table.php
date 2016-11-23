@@ -18,7 +18,7 @@ class AddCreateActividadesEconomicasTable extends Migration
             $table->increments('id');
             $table->integer('anio');
             $table->string('descripcion',50);
-            $table->integer('valor');
+            $table->bigInteger('valor');
             $table->enum('tipo', ['pasivo','activo']);
 
             $table->integer('idPatrimonio')->unsigned();

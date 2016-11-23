@@ -18,8 +18,9 @@ class AddCreateReunionesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('descripcion',100);
-            $table->integer('cantidadAsistentes');
-            $table->integer('cantidadDecisiones');
+            $table->bigInteger('cantidadAsistentes');
+            $table->bigInteger('cantidadDecisiones');
+            $table->dateTime('fecha_realizacion');
 
             $table->integer('idEmpresa')->unsigned();
             $table->foreign('idEmpresa')->references('id')->on('organizaciones')->onDelete('cascade');

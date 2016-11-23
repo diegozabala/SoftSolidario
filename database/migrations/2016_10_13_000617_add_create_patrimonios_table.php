@@ -20,7 +20,7 @@ class AddCreatePatrimoniosTable extends Migration
             $table->foreign('idEmpresa')->references('id')->on('organizaciones')->onDelete('cascade');
 
             $table->integer('anio');
-            $table->integer('valor');
+            $table->bigInteger('valor');
             $table->timestamps();
         });
     }

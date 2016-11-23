@@ -29,8 +29,8 @@ class GraficasController extends Controller
         }
 
         foreach($usuarios as $usuario){
-        $diasel=intval(date("d",strtotime($usuario->created_at) ) );
-        $registros[$diasel]++;    
+            $diasel=intval(date("d",strtotime($usuario->created_at) ) );
+            $registros[$diasel]++;    
         }
 
         $data=array("totaldias"=>$ultimo_dia, "registrosdia" =>$registros);
@@ -62,11 +62,11 @@ class GraficasController extends Controller
 
     public function index()
     {
-        $anio=date("Y");
-        $mes=date("m");
-        return view("listados.listado_graficas")
-               ->with("anio",$anio)
-               ->with("mes",$mes);
+        $reuniones= DB::table('reuniones')
+        ->join('organizaciones','organizaciones.id','=','reuniones.idEmpresa')
+        ->select('organizaciones.*','organizaciones.nombre')->get();
+
+        dd($reuniones);
     }
 
     /**

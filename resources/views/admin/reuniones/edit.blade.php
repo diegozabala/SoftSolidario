@@ -6,26 +6,33 @@
 
 @section('content')
 
-  {!! Form::open(['route'=>['solidario.reuniones.update',$reunion],'method'=>'PUT','class'=>'form-horizontal']) !!}
-  <div class="box-body">
-    <div class="form-group">
-      <label for="descripcion">Descripción</label>
-      <textarea row="5" cols="50" class="form-control" name="descripcion" value="{{$reunion->descripcion}}" required>
-      </textarea>
-    </div>
+  {!! Form::open(['route'=>['solidario.reuniones.update',$reunion],'method'=>'POST','class'=>'form-horizontal']) !!}
+      <div class="box-body">
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea row="5" cols="50" class="form-control" name="descripcion" value="{{$reunion->descripcion}}" required>
+              </textarea>
+            </div>
 
-    <div class="form-group">
-      <label for="cantidadAsistentes">Numero de asistentes a la reunión</label>
-      <input type="number" class="form-control" name="cantidadAsistentes" value="{{$reunion->cantidadAsistentes}}" required>
-    </div>
-    <div class="form-group">
-      <label for="cantidadDecisiones">Cantidad llamados atencion</label>
-      <input type="number" class="form-control" name="cantidadDecisiones" value="{{$reunion->cantidadDecisiones}}" required>
-    </div>
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <button type="submit" name="editar" class="btn btn-primary">Registrar Cambios</button>
-  </div>
+            <div class="form-group">
+              <label for="cantidadAsistentes">Numero de asistentes a la reunión</label>
+              <input type="number" class="form-control" name="cantidadAsistentes" value="{{$reunion->cantidadAsistentes}}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="cantidadDecisiones">Cantidad llamados atencion</label>
+              <input type="number" class="form-control" name="cantidadDecisiones" value="{{$reunion->cantidadDecisiones}}" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="fecha_realizacion">Fecha de Realización</label>
+               <input type="date" class="form-control" name="fecha_realizacion" value="{{$reunion->fecha_realizacion}}" required>
+            </div>
+                  
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <button type="submit" name="editar" class="btn btn-primary">Registrar Cambios</button>
+      </div>
   {!! Form::close() !!}
 
 @endsection

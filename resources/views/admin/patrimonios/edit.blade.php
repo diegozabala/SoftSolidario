@@ -6,7 +6,7 @@
 
 @section('content')
 
-  {!! Form::open(['route'=>['solidario.patrimonios.update',$patrimonio],'method'=>'PUT','class'=>'form-horizontal']) !!}
+  {!! Form::open(['route'=>['solidario.patrimonios.update',$patrimonio],'method'=>'POST','class'=>'form-horizontal']) !!}
   <div class="box-body">
     <div class="form-group">
       <label for="anio">Año</label>

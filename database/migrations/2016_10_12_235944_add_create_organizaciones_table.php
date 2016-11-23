@@ -16,7 +16,7 @@ class AddCreateOrganizacionesTable extends Migration
         Schema::create('organizaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 40);
-            $table->integer('telefono');
+            $table->bigInteger('telefono');
             $table->string('direccion' , 50);
             $table->string('razonSocial');
             $table->timestamps();
