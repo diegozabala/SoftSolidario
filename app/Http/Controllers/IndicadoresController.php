@@ -24,15 +24,18 @@ class IndicadoresController extends Controller
      */
     public function index()
     {
+        $totalOrganizaciones=DB::table('organizaciones')->get();
+        $contador = 0;
+            foreach ($totalOrganizaciones as $organizacion) {
+                $reunionesNoviembre[$contador]=DB::table('reuniones')
+                    ->join('organizaciones','organizaciones.id','=','reuniones.idEmpresa')
+                    ->select('organizaciones.nombre','cantidad_reuniones')
+                    ->whereMonth('reuniones.fecha_realizacion', '=', '11')->where('organizaciones.id','=',$organizacion->id)->count('reuniones.id');
+                $contador = $contador +1;
+                $nombreEmpresasNoviembre[$contador] = $organizacion->nombre;
+        }
 
-        $reunionesNoviembre=DB::table('reuniones')
-            ->join('organizaciones','organizaciones.id','=','reuniones.idEmpresa')
-            ->select('organizaciones.nombre')
-            ->whereMonth('reuniones.fecha_realizacion', '=', '11')->count('reuniones.id');
-
-        dd($reunionesNoviembre);
-
-    	return view('admin.indicadores.index');
+    	return view('admin.indicadores.index')->with('reunionesNoviembre',$reunionesNoviembre)->with('nombreEmpresasNoviembre',$nombreEmpresasNoviembre);
     }
 
     /**
